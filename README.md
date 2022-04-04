@@ -1,5 +1,27 @@
 # robot-list
 
+Robot list 🤖 is a project that allows you to filter the information from a list of robots. It is built with the following technologies:
+
+- Nuxt
+- TypeScript
+- SCSS
+- Lodash
+
+
+For deployment and get the statically generated site:  I chose Netlify 🌟
+
+### Development
+
+To achieve the objective of this app I used a bunch of features of the technologies above.
+
+1) Get data from API, I'm used to do it in Vue 2 in the `mounted` hook, but doing a bit of research about Nuxt, I discovered `asyncData` hook. It's recommended to use it to render data during server-side rendering.
+
+2) The number of elements in the list is massive! So I had to optimize how to show them and not get the screen totally freeze in the attempt. A `virtual scroller` was the solution for it.
+
+3) To optimize search results a key point was to use a `debounce`, for this `Lodash` utilities library was very useful.
+
+4) I took advantage of loading attribute in the img tag to `lazy` load images
+
 ## Build Setup
 
 ```bash
