@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <SearchBar v-model="inputValue" />
+    <SearchBar :inputValue="inputValue" v-model="inputValue" />
     <RecycleScroller
       :items="filteredUsers"
       :item-size="160"
@@ -53,10 +53,12 @@ export default Vue.extend({
   },
   watch: {
     inputValue(newVal: string) {
-      this.$router.replace({
-        name: this.$route.name!,
-        query: { search: newVal },
-      })
+      this.$router
+        .replace({
+          name: this.$route.name!,
+          query: { search: newVal },
+        })
+        .catch(() => {})
     },
   },
 })

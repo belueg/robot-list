@@ -1,6 +1,11 @@
 <template>
   <div class="search-bar">
-    <input type="text" @input="onUserInput" class="search-bar__input" />
+    <input
+      type="text"
+      :value="inputValue"
+      @input="onUserInput"
+      class="search-bar__input"
+    />
     <svg
       class="search-bar__icon"
       width="15"
@@ -25,12 +30,15 @@ import debounce from 'lodash.debounce'
 
 export default {
   name: 'SearchBar',
+  props: {
+    inputValue: {
+      type: String,
+      default: '',
+    },
+  },
   methods: {
     onUserInput: debounce(function (ev) {
-      this.$emit(
-        'input',
-        ev.target.value
-      )
+      this.$emit('input', ev.target.value)
     }, 300),
   },
 }
